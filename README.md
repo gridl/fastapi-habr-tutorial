@@ -1,0 +1,1 @@
+Code for my article about FastAPI of habr.com.
