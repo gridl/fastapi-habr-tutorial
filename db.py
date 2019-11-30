@@ -2,6 +2,7 @@
 Fake database
 """
 import typing
+import random
 from pydantic import BaseModel
 from pydantic import Field
 
@@ -20,6 +21,9 @@ class Database:
 
     def __init__(self):
         self._items: typing.Dict[int, PhraseOutput] = {}  # id: model
+
+    def get_random(self) -> int:
+        return random.choice(self._items.keys())
 
     def get(self, id: int) -> typing.Optional[PhraseOutput]:
         return self._items.get(id)
