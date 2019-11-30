@@ -1,3 +1,3 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="Phrase generator")
+app = FastAPI(title="Random phrase")
