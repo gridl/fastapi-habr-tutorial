@@ -34,7 +34,7 @@ class Database:
         self._items[phrase_out.id] = phrase_out
         return phrase_out
 
-    def delete(self, id: int) -> typing.Optional[typing.NoReturn, None]:
+    def delete(self, id: int) -> typing.Union[typing.NoReturn, None]:
         if id in self._items:
             del self._items[id]
         else:
