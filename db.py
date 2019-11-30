@@ -6,13 +6,17 @@ import random
 from pydantic import BaseModel
 from pydantic import Field
 
+
 class PhraseInput(BaseModel):
     """Phrase model"""
+
     author: str = "Anonymous"
     text: str = Field(..., title="Text", description="Text of phrase", max_length=200)
 
+
 class PhraseOutput(PhraseInput):
     id: typing.Optional[int] = None
+
 
 class Database:
     """
@@ -39,5 +43,3 @@ class Database:
             del self._items[id]
         else:
             raise ValueError("Phrase doesn't exist")
-
-

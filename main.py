@@ -7,7 +7,13 @@ from db import Database
 app = FastAPI(title="Random phrase")
 db = Database()
 
-@app.get("/get", response_description="Random phrase", description="Get random phrase from database", response_model=PhraseOutput)
+
+@app.get(
+    "/get",
+    response_description="Random phrase",
+    description="Get random phrase from database",
+    response_model=PhraseOutput,
+)
 async def get():
     try:
         phrase = db.get(db.get_random())
@@ -15,10 +21,16 @@ async def get():
         raise HTTPException(404, "Phrase list is empty")
     return phrase
 
-@app.post("/add", response_description="Added phrase with *id* parameter", response_model=PhraseOutput)
+
+@app.post(
+    "/add",
+    response_description="Added phrase with *id* parameter",
+    response_model=PhraseOutput,
+)
 async def add(phrase: PhraseInput):
     phrase_out = db.add(phrase)
     return phrase_out
+
 
 @app.delete("/delete", response_description="Result of deleting")
 async def delete(id: int):
